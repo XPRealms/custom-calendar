@@ -1,6 +1,6 @@
 {
-  "name": "template-svelte-ts",
-  "description": "Provides a bare bones Typescript template repo to get set up with using the the TyphonJS Runtime Library and Svelte.",
+  "name": "custom-calendar",
+  "description": "Create a simple calendar",
   "license": "MIT",
   "private": true,
   "type": "module",
@@ -13,12 +13,19 @@
     "#standard/*": "@typhonjs-fvtt/standard/*"
   },
   "dependencies": {
+    "@event-calendar/core": "^3.7.2",
+    "@event-calendar/day-grid": "^3.7.2",
+    "@fullcalendar/core": "^6.1.15",
+    "@fullcalendar/daygrid": "^6.1.15",
     "@typhonjs-fvtt/runtime": "^0.2.0-next.6",
     "@typhonjs-fvtt/standard": "^0.2.0-next.3",
+    "dayjs": "^1.11.13",
     "svelte": "^4.2.19"
   },
   "devDependencies": {
     "foundry-pf2e": "github:7H3LaughingMan/foundry-pf2e",
+    "prettier": "^3.4.2",
+    "prettier-plugin-svelte": "^3.3.2",
     "typescript": "^5.7.2"
   },
   "browserslist": [

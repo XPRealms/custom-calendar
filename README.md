@@ -1,4 +1,5 @@
 # template-svelte-ts
+
 [![TyphonJS Discord](https://img.shields.io/discord/737953117999726592?label=TyphonJS%20Discord)](https://typhonjs.io/discord/)
 [![Twitch](https://img.shields.io/twitch/status/typhonrt?style=social)](https://www.twitch.tv/typhonrt)
 [![Code Style](https://img.shields.io/badge/code%20style-allman-yellowgreen.svg?style=flat)](https://en.wikipedia.org/wiki/Indent_style#Allman_style)
@@ -18,6 +19,7 @@ intended as public domain / freely available starter code that you can use for a
 however you see fit with no restrictions.
 
 ## About:
+
 Getting started with a new library or development methodology can be difficult. This template repo contains a
 barebones setup suitable to start working on your own module. Certainly do check out
 [Essential Svelte (ESM)](https://github.com/typhonjs-fvtt-demo/essential-svelte-esm) for more involved demos that show specific
@@ -41,18 +43,19 @@ Don't skip step 9.... You have read this list right?
    repo if you have also released your Foundry package.
 7. In `./vite.config.ts` update `s_SVELTE_HASH_ID` to provide a short unique hash ID; suggestion: base it off your package ID.
 8. Open in your IDE or via command line and proceed to run `npm install`
-9. __Run the NPM script `build` to create the production bundle. This is required to initially build assets into `dist/`.__
+9. **Run the NPM script `build` to create the production bundle. This is required to initially build assets into `dist/`.**
 10. Optionally run the NPM script `dev` to start the Vite dev server which uses `esbuild` &
-   HMR (hot module replacement) to dynamically update your running module in real time for all Svelte related components.
-   Don't forget to enable language hot reload in the Foundry server admin for hot reloads for language translation files.
+    HMR (hot module replacement) to dynamically update your running module in real time for all Svelte related components.
+    Don't forget to enable language hot reload in the Foundry server admin for hot reloads for language translation files.
 11. Restart Foundry VTT. This is necessary for Foundry to load the new module.
 12. You should now have a new module installed `Template Svelte (TS)` or whatever title you set in step #4 visible in
-   your modules list.
+    your modules list.
 13. Launch a game / world of your choice.
 14. Enable your new module under `Manage Modules`.
 15. On reload the basic application will appear instantly as it is rendered in the `ready` Foundry hook from the entry.
 
 ## Production / release build:
+
 - Increment the version of your module in `module.json` using [SemVer](https://semver.org/).
 - Commit to GitHub
 - Create a release / GH action will build the package and bundle assets.
@@ -62,4 +65,5 @@ Don't skip step 9.... You have read this list right?
   manifest URL field in the add-on modules / install module screen: `https://github.com/<YOUR GITHUB USER NAME>/<YOUR REPO>/releases/latest/download/module.json`.
 
 ## Updating types:
+
 - `foundry-pf2e` only provides a direct Github install / linked in `package.json`. Run `npm update` to get the latest.

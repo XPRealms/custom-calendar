@@ -1,11 +1,11 @@
 {
-  "id": "template-svelte-ts",
-  "title": "Template Svelte (TS)",
-  "description": "Provides a bare bones Typescript template repo to get set up with using the TyphonJS Runtime Library and Svelte.",
+  "id": "custom-calendar",
+  "title": "Custom Calendar",
+  "description": "Create a simple calendar",
   "authors": [
     {
-      "name": "Michael Leahy (TyphonJS) - MLeahy#4299",
-      "url": "https://www.typhonjs.io"
+      "name": "Ricardo Machado",
+      "url": "https://github.com/DrZanuff"
     }
   ],
   "version": "0.0.0",
@@ -13,20 +13,12 @@
     "minimum": "12",
     "verified": "12"
   },
-  "esmodules": [
-    "dist/template-svelte-ts.js"
-  ],
-  "styles": [
-    "dist/template-svelte-ts.css"
-  ],
+  "esmodules": ["dist/custom-calendar.js"],
+  "styles": ["dist/custom-calendar.css"],
   "flags": {
     "hotReload": {
-      "extensions": [
-        "json"
-      ],
-      "paths": [
-        "lang"
-      ]
+      "extensions": ["json"],
+      "paths": ["lang"]
     }
   },
   "languages": [
