@@ -14,7 +14,7 @@
     "verified": "12"
   },
   "esmodules": ["dist/custom-calendar.js"],
-  "styles": ["dist/custom-calendar.css"],
+  "styles": ["dist/custom-calendar.css","styles/custom-calendar-ui.css"],
   "flags": {
     "hotReload": {
       "extensions": ["json"],

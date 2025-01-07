@@ -5,7 +5,7 @@
     "target": "ES2022",
     "baseUrl": ".",
 
-    "types": ["foundry-pf2e/foundry"],
+    "types": ["foundry-pf2e/foundry", "jquery"],
 
     "isolatedModules": true,
     "sourceMap": true,

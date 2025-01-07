@@ -1,0 +1,27 @@
+.cc-custom-calendar-ui-button {
+  margin-left: 40px;
+
+  padding: 0;
+  color: white;
+  line-height: normal;
+  border: 0;
+  z-index: 101;
+  pointer-events: all;
+  aspect-ratio: 1/1;
+  min-width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: var(--color-text-light-heading);
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid var(--color-border-dark);
+  box-shadow: 0 0 3px #444 inset;
+  border-radius: 3px;
+}
+
+.cc-custom-calendar-ui-button:hover,
+.cc-custom-calendar-ui-button:focus {
+  box-shadow: none;
+  text-shadow: 0 0 5px red;
+}
