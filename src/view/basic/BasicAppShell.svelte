@@ -22,6 +22,16 @@
    }
 </script>
 
+<!-- ApplicationShell provides the popOut / application shell frame, header bar, content areas -->
+<!-- ApplicationShell exports `elementRoot` which is the outer application shell element -->
+<ApplicationShell bind:elementRoot>
+   <main>
+      <h1>Custom Calendar</h1>
+      <ModularCalendar />
+      <FullCalendar />
+   </main>
+</ApplicationShell>
+
 <style lang="scss">
    main {
       text-align: center;
@@ -29,13 +39,3 @@
       flex-direction: column;
    }
 </style>
-
-<!-- ApplicationShell provides the popOut / application shell frame, header bar, content areas -->
-<!-- ApplicationShell exports `elementRoot` which is the outer application shell element -->
-<ApplicationShell bind:elementRoot>
-   <main>
-      <h1>Custom Calendar</h1>
-      <!-- <FullCalendar /> -->
-      <ModularCalendar />
-   </main>
-</ApplicationShell>

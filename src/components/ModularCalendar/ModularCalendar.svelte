@@ -3,11 +3,13 @@
 
    let currentYear = 0
    let currentMonthIndex = 0
-   let calendar = generateCalendar(weekDays, months, currentYear)
+   const { days, weekHeader } = generateCalendar(weekDays, months, currentYear)
+   let calendar = days
+   console.log("DBG:", { calendar })
 
    // Atualizar o calendário
    function updateCalendar() {
-      calendar = generateCalendar(weekDays, months, currentYear)
+      calendar = generateCalendar(weekDays, months, currentYear).days
    }
 
    // Navegar para o próximo mês
@@ -41,11 +43,17 @@
 
    {#each [calendar[currentMonthIndex]] as { month, year, weeks }}
       <h2>Month of the {month} - Year {year}</h2>
-      <div class="month">
+      <div class="week-flex">
+         {#each weekHeader as header}
+            <span class="day-header">{header}</span>
+         {/each}
+      </div>
+
+      <div class="month-flex">
          {#each weeks as week}
-            <div class="week">
+            <div class="week-flex">
                {#each week as { day, dayOfWeek, isWeekend }}
-                  <div class={`day ${isWeekend ? "weekend" : ""}`}>
+                  <div class={`day-flex ${isWeekend ? "weekend" : ""}`}>
                      {dayOfWeek}: {day}
                   </div>
                {/each}
@@ -63,6 +71,26 @@
    .calendar {
       display: flex;
       flex-direction: column;
+   }
+
+   .month-flex {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+   }
+
+   .week-flex {
+      display: flex;
+      gap: 5px;
+   }
+
+   .day-flex {
+      flex: 3;
+      aspect-ratio: 1/1;
+   }
+
+   .day-header {
+      flex: 3;
    }
 
    .month {

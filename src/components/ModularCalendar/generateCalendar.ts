@@ -21,12 +21,17 @@ type Calendar = {
   weeks: MonthDays[];
 };
 
+type GeneratedCalendar = {
+  days: Calendar[]
+  weekHeader: string[] 
+}
+
 export function generateCalendar(
   weekDays: WeekDay[],
   months: Month[],
   currentYear: number = 0,
   monthsLength: number = 3
-): Calendar[] {
+): GeneratedCalendar {
   const daysInWeek = weekDays.length;
   const weeksInMonth = monthsLength;
   const days: Calendar[] = [];
@@ -59,7 +64,7 @@ export function generateCalendar(
     });
   }
 
-  return days;
+  return {days, weekHeader : weekDays.map( (day) => day.name ) };
 }
 
 export { months, weekDays } from './sampleCalendar'

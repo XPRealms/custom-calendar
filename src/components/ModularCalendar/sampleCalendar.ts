@@ -1,4 +1,6 @@
 export const weekDays = [
+  { name: "pre", isWeekend: true },
+  { name: "mid", isWeekend: false },
   { name: "uno", isWeekend: false },
   { name: "duno", isWeekend: false },
   { name: "trino", isWeekend: false },
