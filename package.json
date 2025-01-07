@@ -23,6 +23,7 @@
     "svelte": "^4.2.19"
   },
   "devDependencies": {
+    "@types/jquery": "^3.5.32",
     "foundry-pf2e": "github:7H3LaughingMan/foundry-pf2e",
     "prettier": "^3.4.2",
     "prettier-plugin-svelte": "^3.3.2",
