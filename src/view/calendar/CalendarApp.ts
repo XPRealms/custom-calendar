@@ -1,18 +1,18 @@
 import { SvelteApplication, type SvelteApp } from "#runtime/svelte/application"
 import { CONSTANTS } from "src/constants"
 
-import BasicAppShell from "./BasicAppShell.svelte"
+import CalendarAppShell from "./CalendarAppShell.svelte"
 
 // Make sure to check out the `BasicApp` namespace below on defining custom options and interface for the `#external`
 // context.
 
-class BasicApp extends SvelteApplication<BasicApp.Options> {
-   constructor(options?: Partial<BasicApp.Options>) {
+class CalendarApp extends SvelteApplication<CalendarApp.Options> {
+   constructor(options?: Partial<CalendarApp.Options>) {
       super(options)
    }
 
-   static get defaultOptions(): BasicApp.Options {
-      return foundry.utils.mergeObject<SvelteApp.Options, Partial<BasicApp.Options>>(super.defaultOptions, {
+   static get defaultOptions(): CalendarApp.Options {
+      return foundry.utils.mergeObject<SvelteApp.Options, Partial<CalendarApp.Options>>(super.defaultOptions, {
          extra: true, // Typed extra option from `BasicApp.Options` below.
          id: CONSTANTS.ID,
          resizable: true,
@@ -23,16 +23,16 @@ class BasicApp extends SvelteApplication<BasicApp.Options> {
          title: "CustomCalendar.title",
 
          svelte: {
-            class: BasicAppShell,
+            class: CalendarAppShell,
             target: document.body,
          },
       })
    }
 }
 
-declare namespace BasicApp {
+declare namespace CalendarApp {
    /** Extends the SvelteApp `#external` types specifying a concrete application */
-   export type External = SvelteApp.Context.External<BasicApp>
+   export type External = SvelteApp.Context.External<CalendarApp>
 
    /** Extended options that you can define. */
    export interface Options extends SvelteApp.Options {
@@ -41,4 +41,4 @@ declare namespace BasicApp {
    }
 }
 
-export { BasicApp }
+export { CalendarApp }
