@@ -38,12 +38,12 @@
 </script>
 
 <div style="--size: {Math.max(weekDays.length - 1, 1)};">
-   <button on:click={prevMonth}>Mês Anterior</button>
-   <button on:click={nextMonth}>Próximo Mês</button>
+   <button on:click={prevMonth}>&lt; Mês Anterior </button>
+   <button on:click={nextMonth}>Próximo Mês &gt;</button>
 
    {#each [calendar[currentMonthIndex]] as { month, year, weeks }}
       <h2>Month of the {month} - Year {year}</h2>
-      <div class="week-flex">
+      <div class="week-header">
          {#each weekHeader as header}
             <span class="day-header">{header}</span>
          {/each}
@@ -76,21 +76,44 @@
    .month-flex {
       display: flex;
       flex-direction: column;
-      gap: 5px;
+      gap: 2px;
+      margin-bottom: 10px;
+      font-weight: 500;
    }
 
    .week-flex {
       display: flex;
-      gap: 5px;
+      gap: 2px;
+   }
+
+   .week-header {
+      display: flex;
+      gap: 2px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: bold;
+      color: white;
+      background-color: rgb(73, 73, 73);
+      margin-bottom: 5px;
    }
 
    .day-flex {
       flex: 3;
       aspect-ratio: 1/1;
+      border: 1px solid rgb(0, 0, 0);
+      text-align: end;
+      padding: 5px;
+      background-color: rgb(207, 207, 207);
+   }
+
+   .day-flex:hover {
+      background-color: rgb(226, 226, 226);
+      transform: scale(1.05);
    }
 
    .day-header {
       flex: 3;
+      border: 1px solid white;
    }
 
    .month {

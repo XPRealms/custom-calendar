@@ -1,10 +1,11 @@
 export const weekDays = [
-  { name: "pre", isWeekend: true },
-  { name: "mid", isWeekend: false },
-  { name: "uno", isWeekend: false },
-  { name: "duno", isWeekend: false },
-  { name: "trino", isWeekend: false },
-  { name: "sonus", isWeekend: true },
+  { name: "Pre", isWeekend: true },
+  { name: "Mid", isWeekend: false },
+  { name: "Uno", isWeekend: false },
+  { name: "Duno", isWeekend: false },
+  { name: "Trino", isWeekend: false },
+  { name: "Sonus", isWeekend: false },
+  {name: "Top", isWeekende: true}
 ]
 
 export const months = [{ name: "Rabbit" }, { name: "Crane" }, { name: "Wolf" }, { name: "Snake" }, { name: "Dragon" }]
