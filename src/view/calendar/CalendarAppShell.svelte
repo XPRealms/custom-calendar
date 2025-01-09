@@ -4,7 +4,7 @@
 <script lang="ts">
    import { getContext } from "svelte"
    import { ApplicationShell } from "#runtime/svelte/component/application"
-   import { type BasicApp } from "./BasicApp"
+   import { type CalendarApp } from "./CalendarApp"
    import FullCalendar from "src/components/FullCalendar/FullCalendar.svelte"
    import ModularCalendar from "src/components/ModularCalendar/ModularCalendar.svelte"
 
@@ -14,7 +14,7 @@
    // You can use `SvelteApp.Context.External` from `#runtime/svelte/application` to get the basic
    // `SvelteApplication` `#external` context. Here we use an extended type defining `application`
    // as `BasicApp`.
-   const { application } = getContext<BasicApp.External>("#external")
+   const { application } = getContext<CalendarApp.External>("#external")
 
    // Shows that you can get the extra options defined in `BasicApp`.
    if (application.options.extra) {
@@ -28,6 +28,8 @@
    <main>
       <h1>Custom Calendar</h1>
       <ModularCalendar />
+
+      <h1>Gregorian Calenda</h1>
       <FullCalendar />
    </main>
 </ApplicationShell>
