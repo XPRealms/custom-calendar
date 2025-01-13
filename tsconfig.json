@@ -4,19 +4,22 @@
     "moduleResolution": "Bundler",
     "target": "ES2022",
     "baseUrl": ".",
-
-    "types": ["foundry-pf2e/foundry", "jquery"],
-
+    "types": [
+      "foundry-pf2e",
+      "jquery",
+      "@typhonjs-fvtt/runtime/types/fvtt-shim/pf2e"
+    ],
     "isolatedModules": true,
     "sourceMap": true,
-
     "strict": false,
     "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
-
     "verbatimModuleSyntax": true
   },
-
-  "include": ["src/**/*"],
-  "exclude": ["node_modules/*"]
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules/*"
+  ]
 }

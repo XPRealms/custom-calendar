@@ -15,6 +15,8 @@
    // `SvelteApplication` `#external` context. Here we use an extended type defining `application`
    // as `BasicApp`.
    const { application } = getContext<CalendarApp.External>("#external")
+   const game = globalThis.game // Access global game as globalThis.game
+   console.log("DBG: Svelte", { test: game.settings })
 
    // Shows that you can get the extra options defined in `BasicApp`.
    if (application.options.extra) {
