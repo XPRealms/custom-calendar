@@ -1,6 +1,6 @@
 import type { Month, WeekDay } from "./generateCalendar"
 
-export const weekDays: WeekDay[] = [
+export const sampleWeekDays: WeekDay[] = [
    { name: "Pre", isWeekend: true },
    { name: "Mid", isWeekend: false },
    { name: "Duno", isWeekend: false },
@@ -9,7 +9,7 @@ export const weekDays: WeekDay[] = [
    { name: "Top", isWeekend: true },
 ]
 
-export const months: Month[] = [
+export const sampleMonths: Month[] = [
    { name: "Rabbit", dayCount: 14 },
    { name: "Crane", dayCount: 7 },
    { name: "Wolf", dayCount: 14 },
