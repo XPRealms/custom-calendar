@@ -73,7 +73,7 @@
                {#each weeks as week}
                   <div class="week-flex">
                      {#each week as { day, dayOfWeek, isWeekend, isNextMonth, isPrevMonth }}
-                        <div class={generateDayClassName({ isWeekend, isNextMonth, isPrevMonth })}>
+                        <div id={dayOfWeek} class={generateDayClassName({ isWeekend, isNextMonth, isPrevMonth })}>
                            {day}
                         </div>
                      {/each}
