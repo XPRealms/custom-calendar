@@ -1,11 +1,16 @@
 <script lang="ts">
    import { generateCalendar, months, weekDays } from "./generateCalendar"
+   import { getContext } from "svelte"
+   import { type CalendarApp } from "../../view/calendar/CalendarApp"
+
+   // Get information from the window - Document it and remove later
+   const application = getContext<CalendarApp.External>("#external").application
+   const { width: windowWidth } = application.position.stores
 
    let currentYear = 0
    let currentMonthIndex = 0
    const { days, weekHeader } = generateCalendar(weekDays, months, currentYear)
    let calendar = days
-   console.log("DBG:", { calendar })
 
    // Atualizar o calendário
    function updateCalendar() {
@@ -35,9 +40,22 @@
       }
       updateCalendar()
    }
+
+   function generateDayClassName({
+      isWeekend,
+      isNextMonth,
+      isPrevMonth,
+   }: {
+      isWeekend: boolean
+      isNextMonth: boolean
+      isPrevMonth: boolean
+   }) {
+      return `day-flex ${isWeekend ? "weekend" : ""} ${isNextMonth ? "next-month" : ""} ${isPrevMonth ? "prev-month" : ""}`
+   }
 </script>
 
-<div style="--size: {Math.max(weekDays.length - 1, 1)};">
+<!-- <div style="--size: {Math.max(weekDays.length - 1, 1)};"> Example how to create dynamic css vars in Svelte -->
+<div style="--window-size: {$windowWidth};">
    <button on:click={prevMonth}>&lt; Mês Anterior </button>
    <button on:click={nextMonth}>Próximo Mês &gt;</button>
 
@@ -49,17 +67,21 @@
          {/each}
       </div>
 
-      <div class="month-flex">
-         {#each weeks as week}
-            <div class="week-flex">
-               {#each week as { day, dayOfWeek, isWeekend }}
-                  <div class={`day-flex ${isWeekend ? "weekend" : ""}`}>
-                     {dayOfWeek}: {day}
+      {#key currentMonthIndex}
+         <div class="fade month-container">
+            <div class="month-flex">
+               {#each weeks as week}
+                  <div class="week-flex">
+                     {#each week as { day, dayOfWeek, isWeekend, isNextMonth, isPrevMonth }}
+                        <div class={generateDayClassName({ isWeekend, isNextMonth, isPrevMonth })}>
+                           {day}
+                        </div>
+                     {/each}
                   </div>
                {/each}
             </div>
-         {/each}
-      </div>
+         </div>
+      {/key}
    {/each}
 </div>
 
@@ -84,11 +106,13 @@
    .week-flex {
       display: flex;
       gap: 2px;
+      justify-content: center;
    }
 
    .week-header {
       display: flex;
       gap: 2px;
+      justify-content: center;
       text-align: center;
       font-size: 16px;
       font-weight: bold;
@@ -98,12 +122,20 @@
    }
 
    .day-flex {
-      flex: 3;
+      min-width: 12%;
       aspect-ratio: 1/1;
       border: 1px solid rgb(0, 0, 0);
       text-align: end;
       padding: 5px;
       background-color: rgb(207, 207, 207);
+   }
+
+   .day-flex:nth-child(1) {
+      color: red;
+   }
+
+   .day-flex:nth-last-child(1) {
+      color: red;
    }
 
    .day-flex:hover {
@@ -112,13 +144,31 @@
    }
 
    .day-header {
-      flex: 3;
+      min-width: 12%;
       border: 1px solid white;
    }
 
-   .month {
-      display: grid;
-      grid-template-columns: repeat(var(--size), 1fr);
-      gap: 10px;
+   .prev-month,
+   .next-month {
+      opacity: 0.2;
+   }
+
+   @keyframes fadeIn {
+      0% {
+         opacity: 0;
+      }
+
+      35% {
+         opacity: 0.2;
+      }
+
+      100% {
+         opacity: 1;
+      }
+   }
+
+   .fade {
+      opacity: 0;
+      animation: fadeIn 0.8s forwards;
    }
 </style>
