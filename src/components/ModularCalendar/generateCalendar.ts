@@ -34,13 +34,11 @@ export function generateCalendar(weekDays: WeekDay[], months: Month[], currentYe
    const days: Calendar[] = []
    const weekendsDays = weekDays.filter((day) => day.isWeekend).map((day) => day.name)
 
-   // Determinar o maior número de dias entre os meses
    const longestMonthDayCount = Math.max(...months.map((month) => month.dayCount))
 
-   // Calcular o número máximo de semanas necessário
    const maxWeeks = Math.ceil(longestMonthDayCount / daysInWeek)
 
-   let currentStartDayIndex = 0 // Índice do dia da semana em que o mês começa (0 = domingo, 1 = segunda, ...)
+   let currentStartDayIndex = 0
 
    for (let monthIndex = 0; monthIndex < months.length; monthIndex++) {
       const month = months[monthIndex]
@@ -55,11 +53,12 @@ export function generateCalendar(weekDays: WeekDay[], months: Month[], currentYe
          const weekDaysInMonth: Day[] = []
 
          for (let dayIndex = 0; dayIndex < daysInWeek; dayIndex++) {
+            const dayOfWeek = weekDays[dayIndex].name
+
             if (weekIndex === 0 && dayIndex < currentStartDayIndex) {
-               // Dias "vazios" antes do início do mês
                weekDaysInMonth.push({
                   day: overFlowPrevDays,
-                  dayOfWeek: "",
+                  dayOfWeek,
                   isWeekend: false,
                   isNextMonth: false,
                   isPrevMonth: true,
@@ -68,21 +67,18 @@ export function generateCalendar(weekDays: WeekDay[], months: Month[], currentYe
                overFlowPrevDays++
                //
             } else if (currentDay <= totalDaysInMonth) {
-               const dayOfWeek = weekDays[(currentStartDayIndex + dayIndex) % daysInWeek]
                weekDaysInMonth.push({
                   day: currentDay,
-                  dayOfWeek: dayOfWeek.name,
-                  // isWeekend: weekendsDays.includes(dayOfWeek.name),
-                  isWeekend: false,
+                  dayOfWeek,
+                  isWeekend: weekendsDays.includes(dayOfWeek),
                   isNextMonth: false,
                   isPrevMonth: false,
                })
                currentDay++
             } else {
-               // Dias "vazios" após o término do mês
                weekDaysInMonth.push({
                   day: overFlowNextDays,
-                  dayOfWeek: "",
+                  dayOfWeek,
                   isWeekend: false,
                   isNextMonth: true,
                   isPrevMonth: false,
@@ -95,7 +91,6 @@ export function generateCalendar(weekDays: WeekDay[], months: Month[], currentYe
          monthDays.push(weekDaysInMonth)
       }
 
-      // Calcular o índice do dia da semana para o próximo mês
       currentStartDayIndex = (currentStartDayIndex + totalDaysInMonth) % daysInWeek
 
       days.push({
