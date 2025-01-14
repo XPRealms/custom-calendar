@@ -1,5 +1,5 @@
 <script lang="ts">
-   import { generateCalendar, months, weekDays } from "./generateCalendar"
+   import { generateCalendar, sampleMonths, sampleWeekDays } from "../../helpers/generateCalendar"
    import { getContext } from "svelte"
    import { type CalendarApp } from "../../view/calendar/CalendarApp"
 
@@ -9,17 +9,17 @@
 
    let currentYear = 0
    let currentMonthIndex = 0
-   const { days, weekHeader } = generateCalendar(weekDays, months, currentYear)
+   const { days, weekHeader } = generateCalendar(sampleWeekDays, sampleMonths, currentYear)
    let calendar = days
 
    // Atualizar o calendário
    function updateCalendar() {
-      calendar = generateCalendar(weekDays, months, currentYear).days
+      calendar = generateCalendar(sampleWeekDays, sampleMonths, currentYear).days
    }
 
    // Navegar para o próximo mês
    function nextMonth() {
-      if (currentMonthIndex < months.length - 1) {
+      if (currentMonthIndex < sampleMonths.length - 1) {
          currentMonthIndex++
       } else {
          currentMonthIndex = 0
@@ -34,7 +34,7 @@
          currentMonthIndex--
       } else {
          if (currentYear > 0) {
-            currentMonthIndex = months.length - 1
+            currentMonthIndex = sampleMonths.length - 1
             currentYear--
          }
       }
@@ -73,7 +73,7 @@
                {#each weeks as week}
                   <div class="week-flex">
                      {#each week as { day, dayOfWeek, isWeekend, isNextMonth, isPrevMonth }}
-                        <div id={dayOfWeek} class={generateDayClassName({ isWeekend, isNextMonth, isPrevMonth })}>
+                        <div class={generateDayClassName({ isWeekend, isNextMonth, isPrevMonth })}>
                            {day}
                         </div>
                      {/each}
